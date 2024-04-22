@@ -1,0 +1,35 @@
+
+
+<div class="layout-column align-items-center mt-50">
+  <section class="layout-row align-items-center justify-content-center">
+    <input type="text" class="large" placeholder="Enter Search Term eg Phil"
+           data-test-id="app-input" [(ngModel)]="searchTerm" (input)="searchCustomers()"/>
+  </section>
+
+  <div class="card w-45 mx-auto mt-75 pb-5" *ngIf="searchedCustomers.length > 0 ; else noResults">  
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Location</th>
+          <th>Gender</th>
+          <th>Income</th>
+        </tr>
+      </thead>
+      <tbody data-test-id="searched-customers">
+        <tr class="slide-up-fade-in" *ngFor="let customer of searchedCustomers">
+        <!-- Use below to render row for each customer object -->
+          <td>{{customer.name}}</td>
+          <td>{{customer.age}}</td>
+          <td>{{customer.location}}</td>
+          <td>{{customer.gender}}</td>
+          <td>{{customer.income}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+​<ng-template #noResults>
+  <div class="mt-50 slide-up-fade-in" data-test-id="no-result">No Results Found</div>
+</ng-template>
+</div>
